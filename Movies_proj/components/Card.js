@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         shadowRadius: 15,
         marginLeft: 10,
         marginRight: 10,
-        marginTop: 8,
+        marginTop: 10,
         marginBottom: 8,
 
     }

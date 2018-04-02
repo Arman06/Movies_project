@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,StyleSheet} from 'react-native';
+import {View,StyleSheet, Dimensions} from 'react-native';
 import News from './News';
 import ScrollFilms from './ScrollFilms';
 import Search from './Search';
@@ -20,7 +20,7 @@ export const Tab = TabNavigator({
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: true,
-    lazy: false,
+    lazy: true,
     tabBarOptions: {
         activeTintColor: 'red',
         inactiveTintColor: 'gray',

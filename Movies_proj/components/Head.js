@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Platform} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 
 const Head = (props) =>{
@@ -16,7 +16,7 @@ const Head = (props) =>{
 const styles = StyleSheet.create({
     view_style: {
         justifyContent: "center",
-        paddingTop: Platform.OS === 'ios' ? 35 : 3,
+        paddingTop: 3,
         height: 50,
         alignItems: "center",
         backgroundColor: "#FAFAFA",
