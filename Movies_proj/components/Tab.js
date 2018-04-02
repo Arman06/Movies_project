@@ -14,7 +14,8 @@ export const Tab = TabNavigator({
     },
     Search: {
         screen: Search,
-    }
+    },
+    
 },
 {
     tabBarPosition: 'bottom',

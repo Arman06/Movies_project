@@ -4,33 +4,59 @@ import Card from './Card';
 import CardUnit from './CardUnit';
 
 
-const FilmDetails = ({film}) => {
-    const {title, original_title, poster_path, backdrop_path} = film;
+class FilmDetails extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = { overview: [], count: 0 }
+      }
+   
+      onPress = () => {
+          if (this.state.count == 0){
+        this.setState({overview: this.props.film.overview});
+        this.setState({count: this.state.count+1});
+        }
+        else{ 
+            this.setState({count: this.state.count-1});
+            this.setState({overview: []});
+            }
+      }
+    
+    render(){
     return(
-        <Card>
-            <CardUnit> 
-                <View style={styles.posterView}>
-                    <Image style={styles.posterStyle}
-                    source={{uri: `https://image.tmdb.org/t/p/w500${poster_path}`}} 
-                    />
+        <View>
+            <Card>
+                <CardUnit> 
+                    <View style={styles.posterView}>
+                        <Image style={styles.posterStyle}
+                        source={{uri: `https://image.tmdb.org/t/p/w500${this.props.film.poster_path}`}} 
+                        />
+                    </View>
+                    <View style={styles.TextContainer}>
+                        <Text style={styles.Text}>{this.props.film.title}</Text>  
+                        <Text style={styles.TextOriginal}>{this.props.film.original_title}</Text>
+                    </View>
+                    <View style={styles.buttonViewStyle}>
+                    <TouchableOpacity style={styles.buttonStyle} onPress={this.onPress}>
+                        <Text style={styles.textButton}>More</Text> 
+                    </TouchableOpacity>
+                    </View>
+                </CardUnit>
+                <View>
+                <CardUnit>
+                    <View style={styles.TextContainerOverView}>
+                        <Text style={styles.TextOverview}>
+                            {this.state.overview}
+                        </Text>
+                    </View>
+                </CardUnit>
                 </View>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.Text}>{film.title}</Text>  
-                    <Text style={styles.TextOriginal}>{film.original_title}</Text>
-                </View>
-                <View style={styles.buttonViewStyle}>
-                <TouchableOpacity style={styles.buttonStyle}>
-                    <Text style={styles.textButton}>More</Text> 
-                </TouchableOpacity>
-                </View>
-            </CardUnit>
-            <CardUnit>
-                <Image style={styles.backdropStyle}
-                source={{uri: `https://image.tmdb.org/t/p/original${backdrop_path}`}} 
-                />
-            </CardUnit>
-        </Card>
+            </Card>
+            <Card>
+                
+            </Card>
+        </View>
     );
+}
 }
 
 const styles = StyleSheet.create({
@@ -42,7 +68,13 @@ const styles = StyleSheet.create({
     TextOriginal: {
         fontSize: 14,
         color: 'grey',
-        },
+    },
+    TextOverview: {
+        fontSize: 14,
+        color: 'black',
+       // padding: 3,
+        
+    },
     TextContainer: {
         flex: 1,
         flexWrap: 'wrap',
@@ -50,14 +82,23 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingLeft: 13,
     },
+    TextContainerOverView: {
+        flex: 1,
+        flexWrap: 'wrap',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: 5,
+        
+    },
     posterStyle: {
+       
         borderWidth: 2,
         borderRadius: 13,
         height: 150,
         width: 100,
     },
     posterView: {
-        
+        justifyContent: 'center',
     },
     backdropStyle: {
         borderWidth: 2,

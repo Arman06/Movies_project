@@ -13,14 +13,16 @@ const CardUnit = (props) => {
 
 const styles = StyleSheet.create({
     containerStyle:{
-        borderRadius: 15,
-        borderBottomWidth: 0,
-        padding: 5,
         backgroundColor: '#FAFAFA',
+        borderWidth: 0,
+        borderRadius: 15,
+        borderColor: '#FAFAFA',
+        padding: 5,
         justifyContent: 'flex-start',
         flexDirection: 'row',
         borderColor: '#ddd',
         position: 'relative',
+        
 
     }
 });
